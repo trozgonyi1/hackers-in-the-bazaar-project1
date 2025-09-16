@@ -1,0 +1,13 @@
+Stack *stack = stack_create(1<<12);
+if (stack == NULL) {
+  printf("Creation failed: stack_create\n");
+}
+stack_push(1, stack);
+stack_push(2, stack);
+stack_push(3, stack);
+
+for (int i = 0; i < stack->sp; i++) {
+  printf("%d\n", stack->stack[i]);
+}
+
+stack_free(stack);

@@ -8,9 +8,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "slow1.h"
+#include "fast.h"
+#include "stack.h"
 
 void print_bar(int percentage) {
-//  printf("%d\n", percentage);
   for(int i = 0; i < percentage; i++) {
     printf("█");
   }
@@ -22,6 +23,8 @@ int main (int argc, char **argv) {
   printf("╔═════════════════════════════════════════════════╗\n");
   printf("║         Racing Ackerman-Péter Functions         ║\n");
   printf("╚═════════════════════════════════════════════════╝\n");
+
+  heap_ackermann_peter(1,1);
 
   clock_t start = clock();
   long long int ap_value = ackermann_peter(3, 2);
