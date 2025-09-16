@@ -1,4 +1,5 @@
 // First attempt
+// Time complexity = O(m * ackermann_peter(m, n))
 
 #include <stdio.h>
 #include <unistd.h>
