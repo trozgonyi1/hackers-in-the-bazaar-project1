@@ -6,32 +6,31 @@
 #include <stdio.h>
 #include "stack.h"
 
-long long int Ackermann(long long m, long long n)
-    {
-        // stack creation
-        Stack* stack = createStack(1000000);
-        push(stack, m)
+int heap_ackermann_peter(int m, int n) {
+// stack creation
+  Stack* stack = stack_create(1<<20);
+  stack_push(m, stack);
+        
+  while(stack->sp != -1) {
+    stack_pop(stack, &m);
 
-        while(!not_empty(stackx)) {
-            pop(stack, &m);
-
-        if (m == 0)
-            n = n + 1;
-        else if (m == 1)
-            n = n + 2;
-        else if (m == 2)
-            n = (n * 2) + 3;
-        else if (n == 0) {
-            --m;
-            n = 1;
-            goto skipStack
-        } else {
-            --n;
-            push(stack, m - 1)
-            goto skipStack
-        }
-        }
-
-        return n;
+skipStack:
+    if (m == 0)
+      n = n + 1;
+    else if (m == 1)
+      n = n + 2;
+    else if (m == 2)
+      n = (n * 2) + 3;
+    else if (n == 0) {
+      --m;
+      n = 1;
+      goto skipStack;
+    } else {
+      --n;
+      stack_push(m - 1, stack);
+      goto skipStack;
     }
-s
+  }
+
+  return n;
+}

@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 // First attempt
 // Time complexity = O(m * ackermann_peter(m, n))
 
-=======
->>>>>>> 82c2ab1 (-)
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
 #include "slow1.h"
-
 
 // size of window
 #define MAX_Y   20                
@@ -98,20 +94,17 @@ long long int ackermann_peter(long long int n, long long int m, int step) {
   plot_live_point(step);
 
   long long int result;
-  if (m == 1) {
-    result = 2 * n;
-  } else if (m >= 1 && n == 1) {
-    result = m;
+  if (m == 0) {
+    return n+1;
+  } else if (m >= 0 && n == 0) {
+    return ackermann_peter(m-1, 1, step+1);
   } else {
-    result = ackermann_peter(m - 1, ackermann_peter(m, n - 1, step + 1), step + 1);
+    return ackermann_peter(m-1, ackermann_peter(m, n-1, step+1), step+1);
   }
 
-
-  
   usleep(120000);
   return result;
 }
-
 
 void ack_plot_begin(void){ init_canvas(); render_canvas(); }
 void ack_plot_end(void){ render_canvas(); }
