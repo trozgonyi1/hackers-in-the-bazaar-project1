@@ -17,9 +17,6 @@ void print_bar(int percentage) {
   printf("░\n");*/
 }
 
-// Forward decls for plotting helpers
-void ack_plot_begin(void);
-void ack_plot_end(void);
 
 int main (int argc, char **argv) {
   if (argc != 4) {
@@ -43,7 +40,7 @@ int main (int argc, char **argv) {
   }
   clock_t end = clock();
   // Final redraw (ensure last point + axes visible)
-  ack_plot_end();
+  
 
   double time_elapsed_1 = (double)(end - start) / CLOCKS_PER_SEC;
 
@@ -76,8 +73,8 @@ int main (int argc, char **argv) {
       printf("Result = %lld\n", ap_value);
     else if (strcmp(argv[3], "--fast") == 0)
       printf("Result = %d\n", heap_ap_value);
-//    print_bar((int)(time_elapsed_1*10000000));
-//    print_bar((int)(time_elapsed_2*10000000));
+//      print_bar((int)(time_elapsed_1*10000000));
+//      print_bar((int)(time_elapsed_2*10000000));
   }
   return 0;
 }
