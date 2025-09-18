@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "../include/stack.h"
 
 Stack *stack_create(int size){
   Stack *ackermann_stack = malloc(sizeof(Stack));

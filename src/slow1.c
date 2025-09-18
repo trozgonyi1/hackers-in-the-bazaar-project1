@@ -34,10 +34,10 @@ unsigned long long ackermann_peter(long long int m, long long int n, int depth) 
     // get current depth
     record_depth(depth);
     
-    if (m == 1) {
-        return 2*n;
-    } else if (m >= 1 && n==1) {
-        return m;
+    if (m == 0) {
+        return n+1;
+    } else if (m >= 0 && n==0) {
+        return ackermann_peter(m-1, 1, depth + 1);
     } else {
         return ackermann_peter(m - 1, ackermann_peter(m, n - 1, depth + 1), depth + 1);
     }
@@ -54,7 +54,7 @@ void print_depth_bar_graph() {
     int sample_rate = (history_size > 50) ? history_size / 50 : 1;
     
     for (int i = 0; i < history_size; i += sample_rate) {
-        printf("%4d: ", i);
+        printf("%8d: ", i);
         
         // draw horizontal bars
         int scaled_depth = (depth_history[i] * 40) / (max_depth > 0 ? max_depth : 1);
